@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace project2._1
 {
-
-    class Program
+    internal class Program
     {
-        //greedy change function algorithm 
+        //greedy change function algorithm
         public static void makeGreedyChange(int[] coinsTemp, int change)
         {
-         //creating an arrray that is going to hold the coins to use to make change   
+            //creating an arrray that is going to hold the coins to use to make change
             int[] coins = new int[coinsTemp.Length];
 
             Array.Copy(coinsTemp, coins, coins.Length);
@@ -35,9 +31,10 @@ namespace project2._1
                 change = change % coin;
             }
             //Writing the coin change statement
-            Console.WriteLine("the coin change is:"+ string.Join(", ", change_list.ToArray()));
+            Console.WriteLine("the coin change is:" + string.Join(", ", change_list.ToArray()));
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             int[] Coins = { 1, 2, 5, 10, 20, 50, 100 };
             int change;
@@ -54,7 +51,7 @@ namespace project2._1
             {
                 Console.WriteLine("empty string");
             }
-            //implementing the make greedy cahnge function 
+            //implementing the make greedy cahnge function
             makeGreedyChange(Coins, change);
         }
     }
