@@ -105,7 +105,7 @@ namespace project2._1
             {
                 Console.WriteLine("empty string");
             }
-            //implementing the make greedy cahnge function
+            //implementing the make greedy change function
             makeGreedyChange(Coins, change);
             makeGreedyChangeGeneral(Coins, change);
 
