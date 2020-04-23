@@ -5,7 +5,6 @@ namespace project2._1
 {
     internal class Program
     {
-
         //greedy change function algorithm
         public static void makeGreedyChange(int[] coinsTemp, int change)
         {
