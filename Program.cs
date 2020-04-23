@@ -33,7 +33,61 @@ namespace project2._1
             //Writing the coin change statement
             Console.WriteLine("the coin change is:" + string.Join(", ", change_list.ToArray()));
         }
+        //greedy change function for general algorithm
+        public static void makeGreedyChangeGeneral(int[] arrayOfCoins, int change)
+        {
+           //assigning of variables
+            int[] coins = new int[arrayOfCoins.Length];
+            Array.Copy(arrayOfCoins, coins, arrayOfCoins.Length);
+            Array.Sort(coins);
 
+            int[] minCoins = new int[change + 1];
+            int[] firstCoinIndex = new int[change + 1];
+
+            for (int secChange = 0; secChange < change + 1; secChange++)
+            {
+                int coinCount = secChange;
+                int newCoinIndex = 0;
+
+                for (int coinIndex = 0; coinIndex < coins.Length; coinIndex++)
+                {
+                    int coin = coins[coinIndex];
+                    if (coin > secChange)
+                    {
+                        continue;
+                    }
+                    if (1 + minCoins[secChange - coin] < coinCount)
+                    {
+                        coinCount = 1 + minCoins[secChange - coin];
+                        newCoinIndex = coinIndex;
+                    }
+                }
+                minCoins[secChange] = coinCount;
+                firstCoinIndex[secChange] = newCoinIndex;
+            }
+
+            int currChange2 = change;
+            int[] coincount = new int[arrayOfCoins.Length];
+            List<string> change_list = new List<string>();
+
+            while (currChange2 > 0)
+            {
+                int coin = coins[firstCoinIndex[currChange2]];
+                coincount[firstCoinIndex[currChange2]]++;
+                currChange2 -= coin;
+            }
+            for (int i = 0; i < coincount.Length; i++)
+            {
+                if (coincount[i] > 0)
+                {
+                    change_list.Add(coincount[i] + "x" + coins[i]);
+                }
+            }
+            //Writing the coin change statement
+            Console.WriteLine("the coin change is:"+string.Join( ", ", change_list.ToArray()));
+          
+
+        }
         private static void Main(string[] args)
         {
             int[] Coins = { 1, 2, 5, 10, 20, 50, 100 };
@@ -53,6 +107,8 @@ namespace project2._1
             }
             //implementing the make greedy cahnge function
             makeGreedyChange(Coins, change);
+            makeGreedyChangeGeneral(Coins, change);
+
         }
     }
 }
