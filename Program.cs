@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace project2._1
+namespace project02
 {
     internal class Program
     {
